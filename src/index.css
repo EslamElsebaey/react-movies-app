@@ -17,6 +17,9 @@
 	 justify-content: center;
 	 align-items: center;
 }
+.notfound h1 {
+	color: red;
+}
  .lds-ripple {
 	 display: inline-block;
 	 position: relative;
