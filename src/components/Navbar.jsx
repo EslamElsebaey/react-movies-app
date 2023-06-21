@@ -19,6 +19,7 @@ export default function Navbar({isLogin  , userName , setuserName , setIsLogin ,
   localStorage.removeItem("moviesPage")
   localStorage.removeItem("tvshowPage")
   localStorage.removeItem("personsPage")
+  closeNavFunc()
  }
 
 

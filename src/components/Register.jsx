@@ -35,7 +35,7 @@ export default function Register() {
         setErrors([])
         setTimeout(() => {
           navigation("/login")
-        }, 2500);
+        }, 2000);
     }else{
       setErrors([]);
       setSuccess(response.data.message);
@@ -99,7 +99,7 @@ export default function Register() {
           }) : ""}
           </ul> : "" }  
           
-         {succes.includes("success") ? <h5 className=' d-flex align-items-center alert alert-success  registermessage'> Registeration Success , Going to login page  <div><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div> </h5>  :""}
+         {succes.includes("success") ? <h5 className=' d-flex align-items-center alert alert-success  registermessage'> Register Succeeded, Going to login   <i class="fas fa-spinner ms-2 fa-pulse"></i> </h5>  :""}
           <h2 className='mb-3 text-capitalize'>Register </h2>
           <form onSubmit={  (event)=>{ sendUser(event)} }>
             <label htmlFor="">First Name : </label>

@@ -237,7 +237,7 @@
 	color: #fff;
 }
 .logout {
-	/* cursor: pointer; */
+	cursor: pointer;
 	margin-left: 25px;
 }
 
@@ -402,43 +402,7 @@ margin-right: 12px;
  .errorslist {
 	 list-style-position: inside;
 }
- .lds-ring {
-	 display: flex;
-	 justify-content: center;
-	 align-items: center;
-	 position: relative;
-	 width: 40px;
-	 height: 40px;
-}
- .lds-ring div {
-	 box-sizing: border-box;
-	 display: block;
-	 position: absolute;
-	 width: 20px;
-	 height: 20px;
-	 margin: 8px;
-	 border: 2px solid #000;
-	 border-radius: 50%;
-	 animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-	 border-color: #000 transparent transparent transparent;
-}
- .lds-ring div:nth-child(1) {
-	 animation-delay: -0.45s;
-}
- .lds-ring div:nth-child(2) {
-	 animation-delay: -0.3s;
-}
- .lds-ring div:nth-child(3) {
-	 animation-delay: -0.15s;
-}
- @keyframes lds-ring {
-	 0% {
-		 transform: rotate(0deg);
-	}
-	 100% {
-		 transform: rotate(360deg);
-	}
-}
+
  .registermessage {
 	 padding: 7px 15px ;
 	 font-size: 18px;
@@ -494,6 +458,10 @@ margin-right: 12px;
  }
 }
  @media screen and (max-width: 768px) {
+	.alert-danger{
+		font-size: 16px;
+		padding: 10px;
+	}
 	 .login-btn {
 		 justify-content: center;
 	}
@@ -591,6 +559,13 @@ margin-right: 12px;
 		font-size: 17px;
 		width: 100%;
 		text-align: center;
+	}
+	.registermessage{
+		font-size: 14px;
+		padding: 10px;
+	}
+	.alert-danger li {
+		font-size: 14px;
 	}
 }
 

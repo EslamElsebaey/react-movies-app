@@ -55,7 +55,7 @@ export default function Login({checkLogin}) {
           localStorage.setItem("newUser" , data.token );
           setTimeout(() => {
             navigation("/home");
-          }, 2500);
+          }, 2000);
         }
       }
       
@@ -80,7 +80,7 @@ export default function Login({checkLogin}) {
             return <li key={index} className=''>{error.message}</li>
           }) : ""}
           </ul> : "" }  
-          {succes.includes("success") ? <h5 className=' d-flex align-items-center  registermessage'> Login Success , Going to Home page  <div><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div> </h5>  :""}
+          {succes.includes("success") ? <h5 className=' d-flex align-items-center justify-content-center  registermessage'> Login Succeeded , Going to Home   <i class="fas ms-2 fa-spinner fa-pulse"></i> </h5>  :""}
           <h1 className="mb-3 text-center">Login</h1>
           <form onSubmit={  (eventinfo)=>{ addLoginUser(eventinfo) }}>
             <label htmlFor="">Eamil :</label>
