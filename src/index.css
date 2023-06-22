@@ -1102,6 +1102,9 @@ text-decoration: none;
 	.social-icon{
 		font-size: 24px;
 	}
+	.social-items a{
+		margin-right: 30px;
+	}
 
 	.movies .showdetails, .tvshows .showdetails{
 		background-color: #fff;
