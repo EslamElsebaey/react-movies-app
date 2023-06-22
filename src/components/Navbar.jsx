@@ -25,6 +25,7 @@ export default function Navbar({isLogin  , userName , setuserName , setIsLogin ,
 
  const [closeNav , setCloseNav] = useState(false) ;
  const [toggleNavIcon , setToggleNavIcon] = useState(false) ;
+ const [togglSearchIcon , setToggleSearchIcon] = useState(false) ;
 
 
 
@@ -79,19 +80,46 @@ window.addEventListener("scroll", () => {
     <nav className="navbar navbar-expand-lg" >
     {isLogin == null ? "" : <div className="scroller"></div>}
       <div className="container">
-      <div className="logoinfo d-flex align-items-center justify-content-center">
+        <div className='d-flex align-items-center'>
+        <div className="logoinfo d-flex align-items-center justify-content-center">
             <Link className="navbar-brand text-capitalize" to="home">
             <i className="fa-solid fa-clapperboard logo "></i>
             </Link>
+      </div>
+      {isLogin === null ? "" :  <div className="nav-item  hello-user-mainNav   d-flex align-items-center">
+            <span className='nav-link'>Hello {userName}  <i className="fas face fa-smile-beam"></i></span>
+            </div>
+      }
         </div>
-      
-        <button  onClick={()=>setToggleNavIcon(!toggleNavIcon)}   className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span className='nav-icon'><i className= {`fa-solid  ${toggleNavIcon ? "fa-close" :"fa-bars" } `} ></i></span>
-        </button>
      
+     
+
+      <div className='search-bars-div'>
+        {isLogin ?   <button onClick={()=>setToggleSearchIcon(!togglSearchIcon)} data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation" className='search-btn' >
+        <i className={`fas  ${togglSearchIcon ? "fa-close" :"fa-search" } `}></i>
+        </button>: "" }
+        <button  onClick={   ()=> setToggleNavIcon(!toggleNavIcon)}   className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span className='nav-icon'>   <i className= {`fas  ${toggleNavIcon ? "fa-close" :"fa-bars" } `} ></i></span>
+        </button>
+       
+      </div>
+        
+     <div className="collapse navbar-collapse " id="navbarSupportedContent2">
+      <ul className='navbar-nav'>
+      <li className="nav-item inputli inputli-small  ">
+              <Link to="/SearchComp">
+             <div className='position-relative h-100'>
+              <input type="text" onKeyUp={(event)=>{ inputSearchFunc(event)  }} className='form-control h-100 search-input' placeholder='Search' />
+              <span className='search-close d-none ' onClick={ ()=>{emptySearchInput()}}><i   className="fa-solid fa-circle-xmark"></i></span>
+             </div>   
+              </Link>
+      </li>
+      </ul>
+    
+     </div>
       
       <div  ref={navbarRef}  className="collapse navbar-collapse" id="navbarSupportedContent">
-        {isLogin === null ? "" :   <ul className="navbar-nav me-auto  mb-lg-0">
+        {isLogin === null ? "" :   <ul className= "navbar-nav me-auto   mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link homelink " onClick={ ()=> closeNavFunc()}    aria-current="page"       to="home" >home</Link>
             </li>
@@ -107,7 +135,7 @@ window.addEventListener("scroll", () => {
           </ul>}
         
           <ul className="navbar-nav ms-auto  ">
-            {isLogin === null ? "" :   <li className="nav-item inputli ">
+            {isLogin === null ? "" :   <li className="nav-item inputli   ">
               <Link to="/SearchComp">
              <div className='position-relative h-100'>
               <input type="text" onKeyUp={(event)=>{ inputSearchFunc(event)  }} className='form-control h-100 search-input' placeholder='Search' />
@@ -115,15 +143,9 @@ window.addEventListener("scroll", () => {
              </div>   
               </Link>
           </li>}
-        
-          <li className="nav-item social-items d-flex align-items-center" >
-            <a  target="_blank" href="https://www.facebook.com/eslam.elsebaey.707/" rel="noreferrer"> <i className="fa-brands fa-facebook  social "></i></a>
-            <a  target="_blank" href="https://github.com/EslamElsebaey" rel="noreferrer">  <i className="fa-brands fa-github  social "></i></a>
-            <a  target="_blank" href="https://www.linkedin.com/in/eslam-elsebaey-ab9564163/" rel="noreferrer">   <i className="fa-brands fa-linkedin  social "></i></a>
-          </li>
-          {isLogin ? <>    <li className="nav-item d-flex align-items-center">
+          {isLogin ? <>    <li className="nav-item hello-user-ulNav  d-flex align-items-center">
             <span className='nav-link'>Hello {userName} <i className="fa-solid face fa-face-grin-beam"></i></span>
-            </li> <li className="nav-item d-flex align-items-center ">
+            </li> <li className="nav-item  d-flex align-items-center ">
                <a onClick={logOut} className="nav-link logout">logout</a>
             </li> </>  :  <><li className="nav-item">
               <Link className="nav-link" onClick={ ()=> closeNavFunc()} to="login">login</Link>

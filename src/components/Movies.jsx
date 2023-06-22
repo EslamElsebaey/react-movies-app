@@ -22,7 +22,7 @@ export default function Movies() {
           <div className="row justify-content-center">
                 {movies.length > 0 ? movies.map((movie , index)=>{
                     return <React.Fragment key={index}>
-                    <div className="col-lg-4 col-md-6 " >
+                    <div className="col-lg-3 col-md-6 " >
                       <div className="movie-item       shadow-lg  text-center position-relative  " >
                         <div className="rate">
                         <i className="fa-solid fa-star ratestar"></i>

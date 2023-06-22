@@ -19,7 +19,7 @@ export default function Tvshow() {
                 <div className="row gy-5 gx-4 justify-content-center">
              {tvshows.length > 0 ? tvshows.map((tvshow , index)=>{
                 return <React.Fragment key={index}>
-                <div className="col-lg-4 col-md-6" >
+                <div className="col-lg-3 col-md-6" >
                   <div className="movie-item       shadow-lg   text-center position-relative  ">
                   <div className="rate">
                     <i className="fa-solid fa-star ratestar"></i>

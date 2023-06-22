@@ -16,6 +16,7 @@ import jwtDecode from "jwt-decode";
 import SearchComp from './components/SearchComp';
 import $ from "jquery";
 import CounterContextProvider   from "./components/MoviesStore"
+import Footer from "./components/Footer";
 
 
 
@@ -88,7 +89,7 @@ function App() {
   return (
     <>
     
-   <div className="toTop"><i className="fa-solid arrowTop fa-angle-up"></i></div>
+   <div className="toTop"> <i className="fas arrowTop fa-arrow-up"></i> </div>
    <Navbar setSearchedItem={setSearchedItem}   inputSearchFunc={inputSearchFunc} checkLogin={checkLogin} isLogin={isLogin} setIsLogin={setIsLogin}  userName={userName} setuserName={setuserName}  />
    <Routes>
    <Route path="/"  element={<Protectedroute>  <Home checkLogin={checkLogin} /></Protectedroute> } />
@@ -110,6 +111,7 @@ function App() {
    
     <Route path="*"  element={<Notfound/>} />
    </Routes>
+   <Footer isLogin={isLogin}/>
 
   
     

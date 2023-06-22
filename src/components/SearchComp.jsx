@@ -17,9 +17,7 @@ export default function SearchComp({searchedItem}) {
                         </div>
                      </div>
                      {searchedItem.length > 0 ? searchedItem.filter((value) => {
-                        return value.poster_path !== null
-                     }).map((movieTvshow , index)=> {
-                   
+                        return value.poster_path !== null}).map((movieTvshow , index)=> {
                        return <React.Fragment key={index}>
                         <div className="col-lg-4 col-md-6" >
                         <div className="movie-item shadow-lg   text-center position-relative  ">
@@ -39,22 +37,17 @@ export default function SearchComp({searchedItem}) {
                         {movieTvshow.title === undefined ? <h5 className="text-center title">{movieTvshow.name}</h5> :
                             <h5 className="text-center title">{movieTvshow.title}</h5> }
                              <div className="overview p-3">
-                              
-                                {/* <p>{movieTvshow.overview}</p> */}
                               <Link to={`/singleitem/${movieTvshow.id}/${movieTvshow.media_type}`} >
                               <button className="btn showdetails mt-2 btn-info">show details</button>
                               </Link>
                              
                             </div>
-                            {/* <div className="overview">
-                              <Link to={`/singleitem/${movieTvshow.id}/${movieTvshow.media_type}`} >
-                              <button className="btn showdetails mt-2 btn-info">show details</button>
-                              </Link>
-                            </div> */}
                         </div>
                         </div>
                     </React.Fragment>
-                    } )  :  ""  }  
+                    } )  :  <div className='search-results-div'></div> } 
+                     
+                
                 
                 </div>
                 </div>
