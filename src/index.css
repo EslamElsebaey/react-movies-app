@@ -1096,8 +1096,11 @@ text-decoration: none;
 		text-align: center;
 		font-size: 15px;
 		order: 2;
-		margin-top: 10px;
+		margin-top: 13px;
 		color: #fff;
+	}
+	.social-icon{
+		font-size: 24px;
 	}
 
 	.movies .showdetails, .tvshows .showdetails{
