@@ -787,6 +787,8 @@ height: 2px;
 	}
 	 .searchcomp .showdetails {
 		 opacity: 1;
+		 background-color: #fff;
+		 color: #000;
 	}
 	.overview-desc{
 		height: auto;
