@@ -1073,12 +1073,14 @@ text-decoration: none;
 
 
 @media screen and (max-width : 767px) {
+	.nav-link{
+		font-size: 17px;
+	}
 	.search-btn i , .nav-icon i{
 		font-size: 22px;
 		width: 22px;
 	}
 	.hello-user-mainNav span.nav-link {
-		font-size: 15px;
 		padding: 5px 8px;
 	}
 	.face{

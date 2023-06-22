@@ -10,12 +10,6 @@ export default function SearchComp({searchedItem}) {
          <div className="searchcomp">
                 <div className="container">
                     <div className="row ">
-                    <div className="col-lg-4 col-md-6 text-center">
-                        <div className="search-sec">
-                        <h3>Welcome to search section</h3>
-                        <p>Here you can jump to your prefered movie & Tv show and know details about it. </p>
-                        </div>
-                     </div>
                      {searchedItem.length > 0 ? searchedItem.filter((value) => {
                         return value.poster_path !== null}).map((movieTvshow , index)=> {
                        return <React.Fragment key={index}>
