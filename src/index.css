@@ -1037,6 +1037,8 @@ text-decoration: none;
 
 
 
+
+
 @media screen and (max-width : 768px) {
 	.footer-fixed-bottom .developer{
 		order: 2;
@@ -1124,6 +1126,10 @@ text-decoration: none;
 	.hello-user-mainNav{
 		display: none !important;
 	}
+	.search-results-div{
+		min-height: 430px;
+	}
+	
 }
 
 

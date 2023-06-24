@@ -6,7 +6,7 @@ import $ from "jquery";
 
 
 
-export default function Login({checkLogin}) {
+export default function Login() {
   
   let  [loginUser , setLoginUser] = useState({
     "email":"",

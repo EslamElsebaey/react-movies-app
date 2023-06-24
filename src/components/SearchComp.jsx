@@ -1,9 +1,10 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import {counterContext} from "./Store"
 
-export default function SearchComp({searchedItem}) {
+export default function SearchComp() {
   
-  
+  let {searchedItem } = useContext(counterContext);
   
     return (
     <>

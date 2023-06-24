@@ -1,12 +1,65 @@
-import React, {  createContext  , useState , useEffect, useCallback} from 'react'
+import React, {  createContext  , useState , useEffect} from 'react'
 import axios from "axios"
 import $ from "jquery";
 import { useLocation } from 'react-router-dom';
+import jwtDecode from "jwt-decode";
 
- export let counterContext = createContext(0) ;
+ export let counterContext = createContext() ;
 
 
 export default function CounterContextProvider (props){
+
+
+
+
+  const [isLogin , setIsLogin] =  useState(null)
+  const [userName , setuserName] =  useState("")
+  let [searchedItem , setSearchedItem] =  useState([]);
+ 
+ function checkLogin () {  
+   let newUserData =  localStorage.getItem("newUser");
+   setIsLogin(newUserData)
+   if(newUserData !== null){
+    let usertoken = jwtDecode(newUserData);
+    setuserName(usertoken.first_name);
+    }
+ }
+
+ function inputSearchFunc(event){
+  searchMoviesTvshows(event.target.value)
+ }
+
+
+
+
+ 
+ async function searchMoviesTvshows(term){
+  if(term !== undefined && term !== ""){
+    let {data} = await axios.get("https://api.themoviedb.org/3/search/multi?api_key=56f77d211d0e245479bc8ca9bc057fea&language=en-US&page=1&include_adult=false&query="+term);
+    setSearchedItem(data.results);
+    $(".search-close").removeClass("d-none");
+  }else if (term === ""){
+    setSearchedItem([]);
+    $(".search-close").addClass("d-none");
+  }
+ }
+
+
+ useEffect(  ()=>{
+  let userData = localStorage.getItem("newUser");
+  setIsLogin(userData)
+  if(userData !== null){
+    let usertoken = jwtDecode(userData);
+    setuserName(usertoken.first_name);
+    }
+ } , [])
+
+ searchMoviesTvshows();
+
+
+
+
+
       let location =  useLocation(); 
     let [tvshows , setTvshow] =  useState([]);
     let [persons , setPersons] =  useState([]);
@@ -86,9 +139,10 @@ export default function CounterContextProvider (props){
   
     
    } , [location.pathname] )
- 
+
+
    
-    return <counterContext.Provider value={{persons , nums , getMoviesTvPerson , tvshows , movies}}>
+    return <counterContext.Provider value={{searchedItem , setSearchedItem ,inputSearchFunc ,checkLogin ,isLogin ,setIsLogin , userName , setuserName    , persons , nums , getMoviesTvPerson , tvshows , movies}}>
         {props.children}
     </counterContext.Provider>
 

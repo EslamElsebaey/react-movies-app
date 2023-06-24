@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {counterContext} from "./Store"
 
-function Footer({isLogin}) {
+function Footer() {
 
+
+
+  let {isLogin} = useContext(counterContext)
   
   return (
   <footer className={isLogin == null ? "footer-fixed-bottom" : "" }>

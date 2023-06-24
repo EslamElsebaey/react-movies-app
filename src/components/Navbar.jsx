@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useRef, useState }  from 'react'
+import React, { useEffect, useRef, useState , useContext }  from 'react'
 import {Link , useNavigate} from "react-router-dom"
 import $ from "jquery";
+import {counterContext} from "./Store"
 
 
 
 
-export default function Navbar({isLogin  , userName , setuserName , setIsLogin , inputSearchFunc , setSearchedItem }) {
+export default function Navbar() {
  
 
+
+  let {isLogin  , userName , setuserName , setIsLogin , inputSearchFunc , setSearchedItem } = useContext(counterContext)
   let navigation = useNavigate()
  
   function logOut(){

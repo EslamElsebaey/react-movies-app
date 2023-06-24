@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState  , useContext } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
+import {counterContext} from "./Store"
 
 
-export default function Home({checkLogin}) {
+export default function Home() {
   let [movies, setMovies] = useState([]);
   let [tvshows, setTvshows] = useState([]);
   let [persons, setPersons] = useState([]);
 
+
+
+  let {checkLogin } = useContext(counterContext);
+
+  
   async function getTrending(type, setterFunction ) {
     let { data } = await axios.get(
       "https://api.themoviedb.org/3/trending/" +

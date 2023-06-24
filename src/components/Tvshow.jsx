@@ -1,7 +1,7 @@
 import React from 'react'
 import {  useContext } from 'react';
 import { Link } from 'react-router-dom';
-import {counterContext} from "./MoviesStore"
+import {counterContext} from "./Store"
 
 export default function Tvshow() {
  

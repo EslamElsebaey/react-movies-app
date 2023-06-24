@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import $ from "jquery";
-import {counterContext} from "./MoviesStore"
+import {counterContext} from "./Store"
 
 
 export default function People() {
