@@ -804,6 +804,7 @@ height: 2px;
 @media screen and (max-width : 768px) {
 	.title{
 		height : auto ;
+		padding:  0 10px;
 	}
 	.overview div p{
 		font-size: 15px;

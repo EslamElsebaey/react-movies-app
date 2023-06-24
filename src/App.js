@@ -14,6 +14,7 @@ import SearchComp from './components/SearchComp';
 import $ from "jquery";
 import CounterContextProvider   from "./components/Store"
 import Footer from "./components/Footer";
+import { useEffect } from "react";
 
 
 
@@ -34,9 +35,10 @@ function App() {
   }
  })
 
- $(".toTop").click(function(){
-  document.documentElement.scrollTop = 0 ;
- })
+function goToTop(){
+  window.scrollTo(0, 0)
+}
+
 
 
 
@@ -47,7 +49,7 @@ function App() {
   return (
     <>
     <CounterContextProvider>
-    <div className="toTop"> <i className="fas arrowTop fa-arrow-up"></i> </div>
+    <div onClick={goToTop} className="toTop"> <i className="fas arrowTop fa-arrow-up"></i> </div>
    <Navbar  />
    <Routes>
    <Route path="/"  element={<Protectedroute>  <Home/></Protectedroute> } />
