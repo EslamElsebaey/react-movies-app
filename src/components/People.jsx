@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import $ from "jquery";
 import {counterContext} from "./Store"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleExclamation  } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function People() {
@@ -36,7 +38,8 @@ setTimeout(() => {
      <div className="persons">
        <div className="container">
                 <div className="row" >
-                  <span className=' d-flex align-items-center justify-content-center clicktoshow'> <i className="fa-solid text-warning me-2 fs-6 fa-circle-exclamation"></i> click on anyone to show details</span>
+                  <span className=' d-flex align-items-center justify-content-center clicktoshow'> 
+                  <FontAwesomeIcon className='text-warning me-2 fs-6' icon={faCircleExclamation} /> click on anyone to show details</span>
                { persons.length > 0 ?  persons.map(  (person , index)=> {
                      return <React.Fragment key={index}>
                      <div key={person} className='bigitem  col-lg-3 col-md-6'   >

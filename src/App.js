@@ -14,7 +14,8 @@ import SearchComp from './components/SearchComp';
 import $ from "jquery";
 import CounterContextProvider   from "./components/Store"
 import Footer from "./components/Footer";
-import { useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowUp  } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -49,7 +50,7 @@ function goToTop(){
   return (
     <>
     <CounterContextProvider>
-    <div onClick={goToTop} className="toTop"> <i className="fas arrowTop fa-arrow-up"></i> </div>
+    <div onClick={goToTop} className="toTop"> <FontAwesomeIcon className="arrowTop" icon={faArrowUp} />   </div>
    <Navbar  />
    <Routes>
    <Route path="/"  element={<Protectedroute>  <Home/></Protectedroute> } />

@@ -3,6 +3,8 @@ import Joi from 'joi';
 import React, {  useState } from 'react'
 import { Link , useNavigate } from 'react-router-dom';
 import $ from "jquery";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner  } from '@fortawesome/free-solid-svg-icons'
 
 export default function Register() {
  
@@ -91,14 +93,11 @@ export default function Register() {
               if(error.message.includes("email")){
                 error.message = "Email must be a valid email example johndoe123@gmail.com/net"
               }
-              // if(error.message.includes("age")){
-              //   error.message = "Age must be greater then 18 and less than 80"
-              // }
             return <li key={index} className=''>{error.message}</li>
           }) : ""}
           </ul> : "" }  
           
-         {succes.includes("success") ? <h5 className=' d-flex align-items-center alert alert-success  registermessage'> Register Succeeded, Going to login   <i className="fas fa-spinner ms-2 fa-pulse"></i> </h5>  :""}
+         {succes.includes("success") ? <h5 className=' d-flex align-items-center alert alert-success  registermessage'> Register Succeeded, Going to login   <FontAwesomeIcon className='ms-2' spin icon={faSpinner} /> </h5>  :""}
           <h2 className='mb-3 text-capitalize'>Register </h2>
           <form onSubmit={  (event)=>{ sendUser(event)} }>
             <label htmlFor="">First Name : </label>

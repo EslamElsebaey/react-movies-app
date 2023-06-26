@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState , useContext }  from 'react'
 import {Link , useNavigate} from "react-router-dom"
 import $ from "jquery";
 import {counterContext} from "./Store"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFaceGrinBeam  , faClapperboard , faBars , faClose , faSearch , faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -29,6 +31,7 @@ export default function Navbar() {
  const [closeNav , setCloseNav] = useState(false) ;
  const [toggleNavIcon , setToggleNavIcon] = useState(false) ;
  const [togglSearchIcon , setToggleSearchIcon] = useState(false) ;
+ const [activeNavLink , setActiveNavLink] = useState(null)
 
 
 
@@ -36,6 +39,11 @@ export default function Navbar() {
  function closeNavFunc(){
   setCloseNav(true)
   setToggleNavIcon(!toggleNavIcon)
+ }
+
+
+ function handleActiveNavLink (id){
+  setActiveNavLink(id)
  }
 
 
@@ -50,14 +58,9 @@ useEffect(()=>{
     navbarRef.current.classList.remove("show") ;
     setCloseNav(false)
   }
-} , [closeNav])
+} , [closeNav , isLogin])
 
 
-
-$(".nav-link").click(function (e){
-  $(e.target).css("color" , "#edaf18");
-  $(".nav-link").not(e.target).css("color" , "white");
-})
 
 
 function emptySearchInput (){
@@ -86,11 +89,11 @@ window.addEventListener("scroll", () => {
         <div className='d-flex align-items-center'>
         <div className="logoinfo d-flex align-items-center justify-content-center">
             <Link className="navbar-brand text-capitalize" to="home">
-            <i className="fa-solid fa-clapperboard logo "></i>
+            <FontAwesomeIcon className='logo' icon={faClapperboard} />
             </Link>
       </div>
       {isLogin === null ? "" :  <div className="nav-item  hello-user-mainNav   d-flex align-items-center">
-            <span className='nav-link'>Hello {userName}  <i className="fas face fa-smile-beam"></i></span>
+            <span className='nav-link'>Hello {userName} <FontAwesomeIcon  className='face' icon={faFaceGrinBeam} />   </span>
             </div>
       }
         </div>
@@ -99,10 +102,10 @@ window.addEventListener("scroll", () => {
 
       <div className='search-bars-div'>
         {isLogin ?   <button onClick={()=>setToggleSearchIcon(!togglSearchIcon)} data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation" className='search-btn' >
-        <i className={`fas  ${togglSearchIcon ? "fa-close" :"fa-search" } `}></i>
+        <FontAwesomeIcon icon={ togglSearchIcon ?  faClose   : faSearch} />
         </button>: "" }
         <button  onClick={   ()=> setToggleNavIcon(!toggleNavIcon)}   className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span className='nav-icon'>   <i className= {`fas  ${toggleNavIcon ? "fa-close" :"fa-bars" } `} ></i></span>
+         <span className='nav-icon'> <FontAwesomeIcon icon={ toggleNavIcon ?  faClose   : faBars} />   </span>
         </button>
        
       </div>
@@ -112,8 +115,8 @@ window.addEventListener("scroll", () => {
       <li className="nav-item inputli inputli-small  ">
               <Link to="/SearchComp">
              <div className='position-relative h-100'>
-              <input type="text" onKeyUp={(event)=>{ inputSearchFunc(event)  }} className='form-control h-100 search-input' placeholder='Search' />
-              <span className='search-close d-none ' onClick={ ()=>{emptySearchInput()}}><i   className="fa-solid fa-circle-xmark"></i></span>
+              <input type="text" onChange={(event)=>{ inputSearchFunc(event)  }} className='form-control h-100 search-input' placeholder='Search' />
+              <span className='search-close d-none ' onClick={ ()=>{emptySearchInput()}}><FontAwesomeIcon icon={faCircleXmark} /></span>
              </div>   
               </Link>
       </li>
@@ -124,16 +127,18 @@ window.addEventListener("scroll", () => {
       <div  ref={navbarRef}  className="collapse navbar-collapse" id="navbarSupportedContent">
         {isLogin === null ? "" :   <ul className= "navbar-nav me-auto   mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link homelink " onClick={ ()=> closeNavFunc()}    aria-current="page"       to="home" >home</Link>
+              <Link className= {`nav-link  ${activeNavLink === 1 ? "activeNavLink" : "" }`}  onClick={ ()=> {closeNavFunc(); handleActiveNavLink(1) } }    aria-current="page"       to="home" >home</Link>
+            </li>
+
+            <li className="nav-item">
+            <Link className= {`nav-link ${activeNavLink === 2 ? "activeNavLink" : "" }`}  onClick={ ()=> {closeNavFunc(); handleActiveNavLink(2) } }    aria-current="page"      to="movies" >movies</Link>
             </li>
             <li className="nav-item">
-            <Link className="nav-link" to="movies" aria-current="page" onClick={ ()=> closeNavFunc()}     >movies</Link>
+              <Link className= {`nav-link ${activeNavLink === 3 ? "activeNavLink" : "" }`}  onClick={ ()=> {closeNavFunc(); handleActiveNavLink(3) } }    aria-current="page"      to="tvshow" >tv shows</Link>
             </li>
+           
             <li className="nav-item">
-            <Link className="nav-link" to="tvshow" onClick={ ()=> closeNavFunc()}  aria-current="page"     >tv shows</Link>
-            </li>
-            <li className="nav-item">
-            <Link className="nav-link" to="people" onClick={ ()=> closeNavFunc()}  aria-current="page" >people</Link>
+              <Link className= {`nav-link ${activeNavLink === 4 ? "activeNavLink" : "" }`}  onClick={ ()=> {closeNavFunc(); handleActiveNavLink(4) } }    aria-current="page"     to="people" >people</Link>
             </li>
           </ul>}
         
@@ -141,15 +146,15 @@ window.addEventListener("scroll", () => {
             {isLogin === null ? "" :   <li className="nav-item inputli   ">
               <Link to="/SearchComp">
              <div className='position-relative h-100'>
-              <input type="text" onKeyUp={(event)=>{ inputSearchFunc(event)  }} className='form-control h-100 search-input' placeholder='Search' />
-              <span className='search-close d-none ' onClick={ ()=>{emptySearchInput()}}><i   className="fa-solid fa-circle-xmark"></i></span>
+              <input type="text" onChange={(event)=>{ inputSearchFunc(event)  }} className='form-control h-100 search-input' placeholder='Search' />
+              <span className='search-close d-none ' onClick={ ()=>{emptySearchInput()}}><FontAwesomeIcon icon={faCircleXmark} /></span>
              </div>   
               </Link>
           </li>}
           {isLogin ? <>    <li className="nav-item hello-user-ulNav  d-flex align-items-center">
-            <span className='nav-link'>Hello {userName} <i className="fa-solid face fa-face-grin-beam"></i></span>
+            <span className='nav-link'>Hello {userName} <FontAwesomeIcon  className='face' icon={faFaceGrinBeam} /></span>
             </li> <li className="nav-item  d-flex align-items-center ">
-               <a onClick={logOut} className="nav-link logout">logout</a>
+               <button onClick={logOut} className="nav-link logout">logout</button>
             </li> </>  :  <><li className="nav-item">
               <Link className="nav-link" onClick={ ()=> closeNavFunc()} to="login">login</Link>
             </li>

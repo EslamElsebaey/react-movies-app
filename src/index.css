@@ -107,6 +107,9 @@
 	 font-size: 15px;
 	 font-weight: 500;
 	 text-align: center;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
 }
  .rate span {
 	 font-size: 15px;
@@ -114,6 +117,7 @@
  .ratestar {
 	 font-size: 13px ;
 	 color: #e7e735   ;
+	 margin-right: 3px;
 }
  .pagenation-nav {
 	 margin-top: 40px;
@@ -216,8 +220,13 @@
 	 margin: 0;
 	 text-transform: capitalize;
 }
- .nav-link:focus, .navbar-brand:focus, .nav-link:hover, .navbar-brand:hover {
+ /* .nav-link:focus, .navbar-brand:focus, .nav-link:hover, .navbar-brand:hover {
 	 color: #fff;
+} */
+
+
+.nav-link:focus, .nav-link:hover{
+	color : #edaf18;
 }
 .search-close{
 	position: absolute;
@@ -226,7 +235,7 @@
     top: 54%;
     transform: translateY(-50%);
 }
-.search-close i{
+.search-close svg{
 	font-size: 18px ;
 }
  .search-input.form-control {
@@ -236,7 +245,7 @@
 	 color: #fff;
 }
 
-.search-close i {
+.search-close svg {
 	color: #fff;
 }
 .logout {
@@ -244,7 +253,7 @@
 	margin-left: 25px;
 }
 
-.nav-icon i {
+.nav-icon svg {
 	font-size: 24px;
 	color: #fff;
 	display: block;
@@ -298,7 +307,9 @@ margin-right: 12px;
 	 color: #d6d4d4;
 }
 
-
+.activeNavLink {
+	color: #edaf18;
+}
  @media screen and (max-width: 992px) {
 	.search-btn{
 		display: block;
@@ -308,7 +319,7 @@ margin-right: 12px;
 		padding: 0;
 		margin-right: 22px;
 	}
-	.search-btn i {
+	.search-btn svg {
 		color: #fff;
 		font-size: 24px;
 		display: block;
@@ -912,6 +923,9 @@ height: 2px;
 }
 
 
+
+
+
 /* ************************************************************************************************************************ */
 /* singleitem style */
 
@@ -997,7 +1011,7 @@ footer{
 
 
 
-.developer i {
+.developer .heart {
 	color : red ; 
 }
 
@@ -1081,7 +1095,7 @@ text-decoration: none;
 	.nav-link{
 		font-size: 17px;
 	}
-	.search-btn i , .nav-icon i{
+	.search-btn svg , .nav-icon svg{
 		font-size: 22px;
 		width: 22px;
 	}

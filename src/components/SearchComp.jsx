@@ -1,6 +1,8 @@
 import React , {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import {counterContext} from "./Store"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar  } from '@fortawesome/free-solid-svg-icons'
 
 export default function SearchComp() {
   
@@ -17,7 +19,7 @@ export default function SearchComp() {
                         <div className="col-lg-4 col-md-6" >
                         <div className="movie-item shadow-lg   text-center position-relative  ">
                         <div className="rate">
-                          <i className="fa-solid fa-star ratestar"></i>
+                          <FontAwesomeIcon className="ratestar" icon={faStar} />
                           <span> {movieTvshow.vote_average}</span> 
                         </div>
                         <Link

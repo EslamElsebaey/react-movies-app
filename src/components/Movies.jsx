@@ -3,6 +3,8 @@ import React from "react";
 import {  useContext } from "react";
 import { Link } from "react-router-dom";
 import {counterContext} from "./Store"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar  } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -25,7 +27,7 @@ export default function Movies() {
                     <div className="col-lg-3 col-md-6 " >
                       <div className="movie-item       shadow-lg  text-center position-relative  " >
                         <div className="rate">
-                        <i className="fa-solid fa-star ratestar"></i>
+                        <FontAwesomeIcon className="ratestar" icon={faStar} />
                          <span> {movie.vote_average.toFixed(1)}</span> 
                         </div>
                         <Link

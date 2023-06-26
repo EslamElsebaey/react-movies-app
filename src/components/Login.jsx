@@ -1,8 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React ,  { useState } from 'react';
+import React ,  { useState  } from 'react';
 import axios from 'axios';
 import  Joi  from 'joi';
-import $ from "jquery";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner  } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -44,12 +45,14 @@ export default function Login() {
     }
   
 
+  
+   
+
     async function addLoginUser(eventinfo){
       eventinfo.preventDefault();
       if(validateLoginUser() === true){
         let {data} =  await axios.post("https://route-movies-api.vercel.app/signin" , loginUser) ;
         setLoginAccept(data.message);
-        $(".errors-list").html("");
         if(data.message === "success"){
           setSuccess(data.message)
           localStorage.setItem("newUser" , data.token );
@@ -61,6 +64,8 @@ export default function Login() {
       
     }
   
+
+    
   
   
   
@@ -80,7 +85,7 @@ export default function Login() {
             return <li key={index} className=''>{error.message}</li>
           }) : ""}
           </ul> : "" }  
-          {succes.includes("success") ? <h5 className=' d-flex align-items-center  registermessage'> Login Succeeded , Going to Home   <i className="fas ms-2 fa-spinner fa-pulse"></i> </h5>  :""}
+          {succes.includes("success") ? <h5 className=' d-flex align-items-center  registermessage'> Login Succeeded , Going to Home <FontAwesomeIcon spin className='ms-2' icon={faSpinner} />    </h5>  :""}
           <h1 className="mb-3 text-center">Login</h1>
           <form onSubmit={  (eventinfo)=>{ addLoginUser(eventinfo) }}>
             <label htmlFor="">Eamil :</label>
