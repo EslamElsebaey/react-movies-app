@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React ,  { useState  } from 'react';
+import React ,  { useEffect, useState  } from 'react';
 import axios from 'axios';
 import  Joi  from 'joi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -26,7 +26,7 @@ export default function Login() {
     setLoginUser(myUser)
   }
 
-  
+
 
  
   function validateLoginUser() {
@@ -51,10 +51,11 @@ export default function Login() {
     async function addLoginUser(eventinfo){
       eventinfo.preventDefault();
       if(validateLoginUser() === true){
-        let {data} =  await axios.post("https://route-movies-api.vercel.app/signin" , loginUser) ;
+        let {data} =  await axios.post("https://movies-api.routemisr.com/signin" , loginUser) ;
         setLoginAccept(data.message);
         if(data.message === "success"){
           setSuccess(data.message)
+          console.log(data.token)
           localStorage.setItem("newUser" , data.token );
           setTimeout(() => {
             navigation("/home");
