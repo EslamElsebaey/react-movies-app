@@ -110,13 +110,11 @@ export default function Register() {
            {succes.includes("registered") ?  <h5 className='text-danger alert alert-danger'>Email already registered</h5>  : ""} 
             <label htmlFor="">Password : </label>
             <input type="password"   onChange={ addUser   }  className="form-control" name='password' />
-            <div className="row align-items-center">
-              <div className="col-md-6 text-center-sm">
+            <div className="d-flex register-footer justify-content-between align-items-center">
               <button type='submit' className=' register-btn '>Register</button>
+              <div className="col-md-6 login-btn">
+                <p>Already have account ? <Link to='/login'>Login</Link></p>
               </div>
-            <div className="col-md-6 login-btn">
-            <p>Already have account ? <Link to='/login'>Login</Link></p>
-            </div>
              
             </div>
            
