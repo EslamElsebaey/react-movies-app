@@ -21,6 +21,7 @@ export default function CounterContextProvider (props){
    setIsLogin(newUserData)
    if(newUserData !== null){
     let usertoken = jwtDecode(newUserData);
+    console.log(usertoken)
     setuserName(usertoken.first_name);
     }
  }

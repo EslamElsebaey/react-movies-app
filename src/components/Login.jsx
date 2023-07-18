@@ -53,6 +53,7 @@ export default function Login() {
       if(validateLoginUser() === true){
         let {data} =  await axios.post("https://movies-api.routemisr.com/signin" , loginUser) ;
         setLoginAccept(data.message);
+        console.log(data)
         if(data.message === "success"){
           setSuccess(data.message)
           console.log(data.token)

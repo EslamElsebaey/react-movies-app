@@ -306,6 +306,10 @@ margin-right: 12px;
  .search-sec input.form-control::placeholder {
 	 color: #d6d4d4;
 }
+input[type="email"] + .alert-danger{
+	font-size: 16px;
+	padding: 10px;
+}
 
 .activeNavLink {
 	color: #edaf18;

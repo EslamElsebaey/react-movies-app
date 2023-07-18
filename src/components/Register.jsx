@@ -40,6 +40,7 @@ export default function Register() {
     }else{
       setErrors([]);
       setSuccess(response.data.message);
+      console.log(response)
       $(".registermessage").css("marginTop", "-10px")
     }
   }
@@ -106,7 +107,7 @@ export default function Register() {
             <input type="text"   onChange={ addUser   }  className="form-control" name='last_name' />
             <label htmlFor="">Email : </label>
             <input type="email"   onChange={ addUser   } className="form-control" name='email' />
-           {succes.includes("registered") ?  <h5 className='text-danger alert alert-danger'>email already registered</h5>  : ""} 
+           {succes.includes("registered") ?  <h5 className='text-danger alert alert-danger'>Email already registered</h5>  : ""} 
             <label htmlFor="">Password : </label>
             <input type="password"   onChange={ addUser   }  className="form-control" name='password' />
             <div className="row align-items-center">
