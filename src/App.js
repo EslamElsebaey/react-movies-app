@@ -49,8 +49,9 @@ function goToTop(){
  
   return (
     <>
+
+<div onClick={goToTop} className="toTop"> <FontAwesomeIcon className="arrowTop" icon={faArrowUp} />   </div>
     <CounterContextProvider>
-    <div onClick={goToTop} className="toTop"> <FontAwesomeIcon className="arrowTop" icon={faArrowUp} />   </div>
    <Navbar  />
    <Routes>
    <Route path="/"  element={<Protectedroute>  <Home/></Protectedroute> } />
