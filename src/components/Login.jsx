@@ -97,10 +97,10 @@ export default function Login() {
             <input type="password" onChange={ (event)=>{matchLoginUser(event)} }  className="form-control password" name='password' />
             { loginAccept.includes("password") ? <span className='text-danger passwordmessage mb-3 d-block '>{loginAccept}</span> : "" }
             <div className='row align-items-center'>
-              <div className="col-md-6 text-center-sm">
+              <div className="col-md-4 text-center-sm">
               <button type='submit' className=' loginbtn  mt-2 '>Login</button>
               </div>
-              <div className="col-md-6 registerBtn">
+              <div className="col-md-8 registerBtn">
                 <p>You don't have account ? <Link to="/register">Register</Link></p>
               </div>
             </div>
