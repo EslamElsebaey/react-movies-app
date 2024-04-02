@@ -517,7 +517,7 @@ input[type="email"] + .alert-danger{
 	 background-color: transparent;
 	 padding: 30px;
 	 border-radius: 15px;
-	 width: 80%;
+	 width: 65%;
 	margin: auto;
 	 border: 2px solid #fff;
 }
